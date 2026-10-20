@@ -236,14 +236,6 @@ curl -X POST http://127.0.0.1:5000/api/analyze \
   -d '{"code": "import hashlib\ndef f(d):\n    return hashlib.md5(d).hexdigest()", "migrate": true}'
 ```
 
-## Environment variables
-
-| Variable | Required | Purpose |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | No | Only for the optional `anthropic` migration backend (`--backend anthropic`). This backend is implemented but **untested**. Never commit a real key. |
-
-Example (placeholder only): `export ANTHROPIC_API_KEY="your-key-here"`
-
 ## Testing
 
 ```bash

@@ -1,0 +1,10 @@
+cryptography>=50        # tested with 50.0.1; ML-KEM / ML-DSA are used by the migration templates and the verifier
+scikit-learn
+numpy
+joblib
+flask
+qiskit            # quantum demo (Shor, Grover); chosen over PennyLane, see README
+pytest
+# optional
+# anthropic             # Claude migration backend
+# torch, transformers   # CodeBERT encoder and fine-tuning

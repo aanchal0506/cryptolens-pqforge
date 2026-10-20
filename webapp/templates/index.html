@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CryptoLens PQ-Forge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>CryptoLens <span>PQ-Forge</span></h1>
+    <p>Find the cryptography in Python code, move it to post-quantum primitives, and check the result.</p>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab active" data-tab="analyze" aria-current="page">Analyze</button>
+    <button class="tab" data-tab="evaluation">Evaluation</button>
+    <button class="tab" data-tab="quantum">Quantum demo</button>
+  </nav>
+</header>
+
+<main id="tab-analyze" class="page">
+  <div class="workspace">
+    <section class="panel editor" aria-label="Code input">
+      <div class="toolbar">
+        <button id="btn-sample" class="ghost">Load sample</button>
+        <label class="ghost file">Upload .py<input id="file" type="file" accept=".py" hidden></label>
+        <button id="btn-clear" class="ghost">Clear</button>
+        <span class="spacer"></span>
+        <label class="check"><input id="opt-migrate" type="checkbox" checked> Migrate and verify</label>
+        <button id="btn-run" class="primary">Analyze</button>
+      </div>
+      <textarea id="code" spellcheck="false" aria-label="Python code" placeholder="Paste Python code here, or load the sample."></textarea>
+      <p id="error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section class="panel flow" aria-label="Pipeline">
+      <h2>Pipeline</h2>
+      <ol id="stepper"></ol>
+    </section>
+  </div>
+
+  <section id="results" class="results" hidden>
+    <div id="gate" class="gate"></div>
+    <div class="riskbar-wrap">
+      <div id="riskbar" class="riskbar" role="img" aria-label="Findings by quantum risk"></div>
+      <div id="filters" class="filters" role="group" aria-label="Filter findings by risk"></div>
+    </div>
+    <div class="split">
+      <div class="panel list">
+        <div class="list-head">
+          <h2>Findings</h2>
+          <button id="btn-cbom" class="ghost">Download CBOM (JSON)</button>
+        </div>
+        <div id="ledger" class="ledger"></div>
+      </div>
+      <aside class="panel detail" id="detail" aria-live="polite">
+        <p class="muted">Select a finding to see how it was classified, the prompt, the migrated code and the checks.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<main id="tab-evaluation" class="page" hidden>
+  <section class="panel" id="eval-body"><p class="muted">Loading...</p></section>
+</main>
+
+<main id="tab-quantum" class="page" hidden>
+  <section class="panel" id="quantum-body">
+    <h2>Why the risk classes exist</h2>
+    <p class="muted lead">Two small Qiskit circuits on a simulator. They show the effect at toy size; breaking real RSA-2048 needs far more qubits than exist today.</p>
+    <div class="toolbar">
+      <label class="check">Shor base a (mod 15)
+        <select id="q-a"><option>2</option><option>4</option><option selected>7</option><option>8</option><option>11</option><option>13</option></select></label>
+      <label class="check">Grover secret key (bits)
+        <input id="q-secret" value="1011" size="9" maxlength="8" inputmode="numeric" pattern="[01]*"></label>
+      <span class="spacer"></span>
+      <button id="btn-quantum" class="primary">Run circuits</button>
+    </div>
+    <p id="q-error" class="error" role="alert" hidden></p>
+    <div id="q-out"></div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+{
+  "bomFormat": "CBOM-style",
+  "generated": "2026-10-13T04:24:58+00:00",
+  "source": "webapp\\sample_app.py",
+  "summary": {
+    "components": 9,
+    "by_risk": {
+      "already_deprecated": 2,
+      "broken_by_shor": 3,
+      "weakened_by_grover": 3,
+      "quantum_safe": 1
+    },
+    "by_migration_state": {
+      "migrated_verified": 8,
+      "safe": 1
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "webapp\\sample_app.py:hash_password:13",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "hash",
+        "quantumRisk": "already_deprecated",
+        "recommendedTarget": "SHA3-256"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "hash_password",
+        "lines": [
+          13,
+          14
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "webapp\\sample_app.py:sign_document:17",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "signature",
+        "quantumRisk": "broken_by_shor",
+        "recommendedTarget": "ML-DSA-87"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "sign_document",
+        "lines": [
+          17,
+          19
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDH",
+      "bom-ref": "webapp\\sample_app.py:derive_shared:22",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "key_exchange",
+        "quantumRisk": "broken_by_shor",
+        "recommendedTarget": "ML-KEM-1024"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "derive_shared",
+        "lines": [
+          22,
+          24
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "webapp\\sample_app.py:seal_blob:27",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "aead",
+        "quantumRisk": "weakened_by_grover",
+        "recommendedTarget": "ChaCha20-Poly1305"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "seal_blob",
+        "lines": [
+          27,
+          28
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Fernet",
+      "bom-ref": "webapp\\sample_app.py:make_cookie:31",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "aead",
+        "quantumRisk": "weakened_by_grover",
+        "recommendedTarget": "ChaCha20-Poly1305"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "make_cookie",
+        "lines": [
+          31,
+          32
+        ]
+      },
+      "classification": {
+        "status": "contested",
+        "source": "rule",
+        "confidence": 1.0,
+        "note": "model predicts 'symmetric' (100%); keeping the rule label"
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "webapp\\sample_app.py:old_encrypt:35",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "symmetric",
+        "quantumRisk": "weakened_by_grover",
+        "recommendedTarget": "AES-256-GCM"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "old_encrypt",
+        "lines": [
+          35,
+          37
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA1",
+      "bom-ref": "webapp\\sample_app.py:tag_message:40",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "mac",
+        "quantumRisk": "already_deprecated",
+        "recommendedTarget": "HMAC-SHA3-256"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "tag_message",
+        "lines": [
+          40,
+          41
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "webapp\\sample_app.py:issue_token:44",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "signature",
+        "quantumRisk": "broken_by_shor",
+        "recommendedTarget": "ML-DSA-87"
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "issue_token",
+        "lines": [
+          44,
+          45
+        ]
+      },
+      "classification": {
+        "status": "detected",
+        "source": "rule+model",
+        "confidence": 1.0,
+        "note": ""
+      },
+      "migration": {
+        "state": "migrated_verified",
+        "attempts": 1,
+        "backend": "template"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "KEM",
+      "bom-ref": "webapp\\sample_app.py:pq_handshake:48",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "primitive": "key_exchange",
+        "quantumRisk": "quantum_safe",
+        "recommendedTarget": ""
+      },
+      "evidence": {
+        "file": "webapp\\sample_app.py",
+        "unit": "pq_handshake",
+        "lines": [
+          48,
+          50
+        ]
+      },
+      "classification": {
+        "status": "contested",
+        "source": "rule",
+        "confidence": 1.0,
+        "note": "model predicts 'none' (97%); keeping the rule label"
+      },
+      "migration": {
+        "state": "safe",
+        "attempts": 0,
+        "backend": null
+      }
+    }
+  ]
+}
